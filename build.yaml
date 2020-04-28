@@ -1,0 +1,6 @@
+builders:
+  happypass_builder:
+    import: 'package:happypass_builder/builder.dart'
+    builder_factories: ['genBuilder']
+    build_extensions: {'.dart': ['.happypass.dart']}
+    build_to: source
