@@ -384,7 +384,7 @@ Future<bool> buildRequestFactory(_BuildContext buildContext) async {
 	buffer.writeln('/// Use for create $className instance');
 	buffer.writeln('class $factoryName { // $factoryName start');
 	buffer.writeln('');
-	buffer.writeln('\t/// Private construstor');
+	buffer.writeln('\t/// Private constructor');
 	buffer.writeln('\t$factoryName._();');
 	buffer.writeln('');
 	buffer.writeln('\t/// Factory method. Create $className instance');
