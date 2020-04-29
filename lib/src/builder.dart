@@ -208,6 +208,7 @@ Future<bool> buildRequestFactory(_BuildContext buildContext) async {
 	final inputId = buildContext.inputId;
 	final classElement = buildContext.classElement;
 	final className = buildContext.classElement.name;
+	final factoryName = '${className}Factory';
 	final concretedName = '_${className}';
 	final methodList = <_MethodBundle>[];
 	// 遍历 Methods, 找到注解为 Post / Get 的抽象方法
@@ -380,7 +381,17 @@ Future<bool> buildRequestFactory(_BuildContext buildContext) async {
 	buffer.writeln('/// ################################################');
 	
 	buffer.writeln('');
-	buffer.writeln('$className generate$className({RequestPrototype prototype}) => $concretedName.requestPrototype(prototype);');
+	buffer.writeln('/// Use for create $className instance');
+	buffer.writeln('class $factoryName { // $factoryName start');
+	buffer.writeln('');
+	buffer.writeln('\t/// Private construstor');
+	buffer.writeln('\t$factoryName._();');
+	buffer.writeln('');
+	buffer.writeln('\t/// Factory method. Create $className instance');
+	buffer.writeln('\tstatic $className create({RequestPrototype prototype}) => $concretedName.requestPrototype(prototype);');
+	buffer.writeln('');
+	buffer.writeln('} // $factoryName end');
+	buffer.writeln('');
 	buffer.writeln('');
 	buffer.writeln('class $concretedName extends $className { // $concretedName start');
 	buffer.writeln('');
