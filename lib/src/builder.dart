@@ -322,21 +322,9 @@ Future<bool> buildRequestFactory(_BuildContext buildContext) async {
 						log.warning('$className - ${method.name} : raw channel must not return Future(Future<dynamic>)');
 						return false;
 					}
-					if (_checkPackageClass(element: typeElem.element, scheme: 'dart', packName: 'core', types: [List, Map])) {
-						isValidTypeArgu = true;
-						break;
-					}
-					if (_checkPackageClass(element: typeElem.element, packName: 'happypass', typeNames: {'ResultPassResponse'})) {
-						isValidTypeArgu = true;
-						break;
-					}
+					isValidTypeArgu = true;
 				}
-				
-				if (!isValidTypeArgu) {
-					// 返回值类型不合法
-					log.warning('$className - ${method.name} : raw channel must not return Future(Future<dynamic>)');
-					return false;
-				}
+				break;
 		}
 		
 		switch (requestAnnotation.type.element.name) {

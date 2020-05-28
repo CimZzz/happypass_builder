@@ -1,6 +1,6 @@
 name: happypass_builder
 description: Auto-gen http request code from happypass
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/CimZzz/happypass_builder
 
 environment:
